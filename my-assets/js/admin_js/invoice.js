@@ -432,8 +432,7 @@ var count = 2,
 
 
       "use strict";
-    function customer_autocomplete(sl) {
-
+    function customer_autocomplete() {
     var customer_id = $('#customer_id').val();
     // Auto complete
     var options = {
@@ -442,7 +441,7 @@ var count = 2,
             var customer_name = $('#customer_name').val();
             var csrf_test_name = $('[name="csrf_test_name"]').val();
             var base_url = $("#base_url").val();
-         
+
         $.ajax( {
           url: base_url + "Cinvoice/customer_autocomplete",
           method: 'post',
@@ -453,6 +452,7 @@ var count = 2,
             csrf_test_name:csrf_test_name,
           },
           success: function( data ) {
+              // console.log(data);
             response( data );
 
           }
@@ -460,11 +460,17 @@ var count = 2,
       },
        focus: function( event, ui ) {
            $(this).val(ui.item.label);
+           if(ui.item.return_id == ui.item.value){
+               document.getElementById("customer_name").style.color = "red";
+           }else{
+               document.getElementById("customer_name").style.color = "black";
+           }
            return false;
        },
        select: function( event, ui ) {
-            $(this).parent().parent().find("#autocomplete_customer_id").val(ui.item.value); 
+            $(this).parent().parent().find("#autocomplete_customer_id").val(ui.item.value);
             var customer_id          = ui.item.value;
+            // console.log(ui.item);
             customer_due(customer_id);
 
             $(this).unbind("change");
@@ -473,6 +479,7 @@ var count = 2,
    }
 
    $('body').on('keypress.autocomplete', '#customer_name', function() {
+       console.log()
        $(this).autocomplete(options);
    });
 

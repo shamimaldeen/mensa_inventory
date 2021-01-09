@@ -332,7 +332,6 @@ var count = 2,
 
         "use strict";
     function customer_autocomplete(sl) {
-
     var customer_id = $('#customer_id').val();
     var csrf_test_name = $("[name=csrf_test_name]").val();
     var base_url  = $("#base_url").val();

@@ -83,8 +83,7 @@
                                         echo display('customer_name').'/'.display('phone');
                                         ?> <i class="text-danger">*</i></label>
                                     <div class="col-sm-6">
-                                        <input type="text" size="100"  name="customer_name" class=" form-control" placeholder='<?php echo display('customer_name').'/'.display('phone') ?>' id="customer_name" tabindex="1" onkeyup="customer_autocomplete()" value="{customer_name}"/>
-
+                                        <input type="text" size="100"  name="customer_name" class=" form-control"  placeholder='<?php echo display('customer_name').'/'.display('phone') ?>'  id="customer_name" tabindex="1" onkeyup="customer_autocomplete()" value="{customer_name}"/>
                                         <input id="autocomplete_customer_id" class="customer_hidden_value abc" type="hidden" name="customer_id" value="{customer_id}">
                                     </div>
                                      <?php if($this->permission1->method('add_customer','create')->access()){ ?>
@@ -514,7 +513,3 @@
     </section>
 </div>
 <!-- Invoice Report End -->
-
-
-
-

@@ -213,6 +213,7 @@ class Linvoice {
         $CI->load->model('Invoices');
         $CI->load->model('Web_settings');
         $customer_details = $CI->Invoices->pos_customer_setup();
+//        var_dump($customer_details); exit();
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $taxfield = $CI->db->select('tax_name,default_value')
                 ->from('tax_settings')
@@ -225,6 +226,7 @@ class Linvoice {
             'taxes'         => $taxfield,
             'customer_name' => $customer_details[0]['customer_name'],
             'customer_id'   => $customer_details[0]['customer_id'],
+            'return_cus_id' => $customer_details[0]['return_cus_id'],
             'bank_list'     => $bank_list
         );
         $invoiceForm = $CI->parser->parse('invoice/add_invoice_form', $data, true);

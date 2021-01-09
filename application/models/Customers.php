@@ -666,10 +666,11 @@ class Customers extends CI_Model {
 
      //autocomplete part
     public function customer_search($customer_id){
- $query = $this->db->select('*')->from('customer_information')
+ $query = $this->db->select('customer_information.*,product_return.customer_id as return_customer_id')->from('customer_information')
+     ->join('product_return','customer_information.customer_id=product_return.customer_id','left')
         ->group_start()
-                ->like('customer_name', $customer_id)
-                ->or_like('customer_mobile', $customer_id)
+                ->like('customer_information.customer_name', $customer_id)
+                ->or_like('customer_information.customer_mobile', $customer_id)
         ->group_end()
         ->limit(30)
         ->get();

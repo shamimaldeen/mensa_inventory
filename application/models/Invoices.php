@@ -413,9 +413,9 @@ class Invoices extends CI_Model {
 
     //POS customer setup
     public function pos_customer_setup() {
-        $query = $this->db->select('*')
+        $query = $this->db->select('*' )
                 ->from('customer_information')
-                ->where('customer_name', 'Walking Customer')
+                ->where('customer_information.customer_name', 'Walking Customer')
                 ->get();
         if ($query->num_rows() > 0) {
             return $query->result_array();
