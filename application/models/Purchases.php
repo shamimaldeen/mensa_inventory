@@ -393,7 +393,11 @@ class Purchases extends CI_Model {
             $product_rate = $rate[$i];
             $product_id = $p_id[$i];
             $total_price = $t_price[$i];
-            $disc = $discount[$i];
+            if($discount!=null) {
+                $disc = $discount[$i];
+            }else{
+                $disc = 0;
+            }
 
             $data1 = array(
                 'purchase_detail_id' => $this->generator(15),
