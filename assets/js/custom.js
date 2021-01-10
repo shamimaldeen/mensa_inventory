@@ -10,7 +10,7 @@ $(function($){
         buttons: [
             {extend: 'copy', className: 'btn-sm prints'},
             {extend: 'csv', title: 'ExampleFile', className: 'btn-sm prints'},
-            {extend: 'excel', title: 'ExampleFile', className: 'btn-sm prints', title: 'exportTitle'},
+            {extend: 'excel', title: 'exportTitle', className: 'btn-sm prints'},
             {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm prints'},
             {extend: 'print', className: 'btn-sm prints'}
         ]
@@ -24,7 +24,7 @@ $(function($){
         buttons: [
             {extend: 'copy', className: 'btn-sm prints'},
             {extend: 'csv', title: 'ExampleFile', className: 'btn-sm prints'},
-            {extend: 'excel', title: 'ExampleFile', className: 'btn-sm prints', title: 'exportTitle'},
+            {extend: 'excel', title: 'exportTitle', className: 'btn-sm prints'},
             {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm prints'},
             {extend: 'print', className: 'btn-sm prints'}
         ]
@@ -889,7 +889,7 @@ $(document).ready(function() {
         m = checkTime(m);
         s = checkTime(s);
         document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
-        t = setTimeout(function () {
+         setTimeout(function () {
             startTime()
         }, 500);
     }
