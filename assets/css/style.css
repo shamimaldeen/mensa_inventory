@@ -933,6 +933,16 @@ font-variant: small-caps
 /*  margin: 10%;*/
 /*}*/
 
+/*@media print
+{
+  @page
+  {
+    size: 5.7in 8.2in;
+    
+  }
+}*/
+
+
 @media print
 {
   @page
