@@ -247,6 +247,7 @@ class Linvoice {
         $CI->load->model('Invoices');
         $CI->load->model('Web_settings');
         $invoice_detail = $CI->Invoices->retrieve_invoice_editdata($invoice_id);
+//        var_dump($invoice_detail);exit();
         $bank_list      = $CI->Web_settings->bank_list();
         $taxinfo        = $CI->Invoices->service_invoice_taxinfo($invoice_id);
         $taxfield       = $CI->db->select('tax_name,default_value')
