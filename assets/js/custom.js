@@ -116,16 +116,47 @@ var twelveHour = $('.timepicker-12-hr').wickedpicker();
 
      });
 
- "use strict";
-       function printDiv(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
-        document.body.innerHTML = printContents;
-        document.body.style.marginTop = "0px";
-        window.print();
-        document.body.innerHTML = originalContents;
-    }
+ // "use strict";
+ //       function printDiv(divName) {
+ //        var printContents = document.getElementById(divName).innerHTML;
+ //        var originalContents = document.body.innerHTML;
+ //        document.body.innerHTML = printContents;
+ //        document.body.style.marginTop = "0px";
+ //        window.print();
+ //        document.body.innerHTML = originalContents;
+ //    }
 
+"use strict";
+function printInvoiceDiv(divName) {
+    // alert(divName)
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    document.body.style.marginTop = "0px";
+    window.print();
+    // $("#printableArea").print()
+    document.body.innerHTML = originalContents;
+}
+"use strict";
+function printDiv(divName) {
+    var mywindow = window.open('', 'PRINT', 'height=,width=600');
+
+    mywindow.document.write('<html><head><title>' + 'Print barcode'  + '</title>');
+    mywindow.document.write('</head><body >');
+    // mywindow.document.write('<h1>' + document.title  + '</h1>');
+    mywindow.document.write(document.getElementById(divName).innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+    mywindow.onload=function () {
+        mywindow.focus();
+        mywindow.print();
+    }
+    // mywindow.close();
+
+    return true;
+}
 
    /*Customer Part*/
   $(function($){

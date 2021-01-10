@@ -937,8 +937,8 @@ font-variant: small-caps
 {
   @page
   {
-    size: 8.2in 5.7in;
-    size: landscape;
+    size: 5.7in 8.2in;
+    /*size: landscape;*/
   }
 }
 
