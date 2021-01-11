@@ -943,14 +943,14 @@ font-variant: small-caps
 }*/
 
 
-@media print
-{
-  @page
-  {
-    size: 5.7in 8.2in;
-    /*size: landscape;*/
-  }
-}
+/*@media print*/
+/*{*/
+/*  @page*/
+/*  {*/
+/*    size: 5.7in 8.2in;*/
+/*    !*size: landscape;*!*/
+/*  }*/
+/*}*/
 
 
 

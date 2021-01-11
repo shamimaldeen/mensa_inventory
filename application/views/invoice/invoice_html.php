@@ -50,10 +50,35 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                 <div class="panel panel-bd">
                     <div id="printableArea">
                         <div class="panel-body">
+                            <div class="row print_header">
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div style="float: right !important;" class="invoice-address">
+                                <div class="col-sm-8 company-content">
+                                    {company_info}
+                                    <img style="width: 50px;height: 40px;" src="<?php
+                                    if (isset($Web_settings[0]['invoice_logo'])) {
+                                        echo html_escape($Web_settings[0]['invoice_logo']);
+                                    }
+                                    ?>" class="img-bottom-m" alt="" >
+                                    <br>
+                                    <span class="label label-success-outline m-r-15 p-10" ><?php echo display('billing_from') ?></span>
+                                    <address class="margin-top10">
+                                        <strong class="company_name_p">{company_name}</strong><br>
+                                        {address}<br>
+                                        <abbr><b><?php echo display('mobile') ?>:</b></abbr> {mobile}<br>
+                                        <abbr><b><?php echo display('email') ?>:</b></abbr>
+                                        {email}<br>
+                                        <abbr><b><?php echo display('website') ?>:</b></abbr>
+                                        {website}<br>
+                                        {/company_info}
+                                        <abbr>{tax_regno}</abbr>
+                                    </address>
+
+
+
+                                </div>
+
+
+                                <div class="col-sm-4 text-left invoice-address">
                                     <h2 class="m-t-0"><?php echo display('invoice') ?></h2>
                                     <div><?php echo display('invoice_no') ?>: {invoice_no}</div>
                                     <div class="m-b-15"><?php echo display('billing_date') ?>: {final_date}</div>
@@ -78,217 +103,171 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                     </address>
                                 </div>
                             </div>
-                            <div class="col-md-8">
 
-                                <div class="company-content">
-                                    {company_info}
-                                    <img style="height: 90px;width: 100px;" src="<?php
-                                    if (isset($Web_settings[0]['invoice_logo'])) {
-                                        echo html_escape($Web_settings[0]['invoice_logo']);
-                                    }
-                                    ?>" class="img-bottom-m" alt="" >
-                                    <br>
-                                    <span class="label label-success-outline m-r-15 p-10" ><?php echo display('billing_from') ?></span>
-                                    <address style="width: 300px;" class="margin-top10">
-                                        <strong class="company_name_p">{company_name}</strong><br>
-                                        {address}<br>
-                                        <abbr><b><?php echo display('mobile') ?>:</b></abbr> {mobile}<br>
-                                        <abbr><b><?php echo display('email') ?>:</b></abbr>
-                                        {email}<br>
-                                        <abbr><b><?php echo display('website') ?>:</b></abbr>
-                                        {website}<br>
-                                         {/company_info}
-                                         <abbr>{tax_regno}</abbr>
-                                    </address>
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="invoice_details">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center"><?php echo display('sl') ?></th>
+                                        <th class="text-center"><?php echo display('product_name') ?></th>
+                                        <th class="text-center"><?php if($is_unit !=0){ echo display('unit');
+                                            }?></th>
+                                        <th class="text-center"><?php if($is_desc !=0){ echo display('item_description');} ?></th>
+                                        <th class="text-center"><?php if($is_serial !=0){ echo display('serial_no');} ?></th>
+                                        <th class="text-right"><?php echo display('quantity') ?></th>
+                                        <?php if($is_discount > 0){ ?>
+                                            <?php if ($discount_type == 1) { ?>
+                                                <th class="text-right"><?php echo display('discount_percentage') ?> %</th>
+                                            <?php } elseif ($discount_type == 2) { ?>
+                                                <th class="text-right"><?php echo display('discount') ?> </th>
+                                            <?php } elseif ($discount_type == 3) { ?>
+                                                <th class="text-right"><?php echo display('fixed_dis') ?> </th>
+                                            <?php } ?>
+                                        <?php }else{ ?>
+                                            <th class="text-right"><?php echo ''; ?> </th>
+                                        <?php }?>
+                                        <th class="text-right"><?php echo display('rate') ?></th>
+                                        <th class="text-right"><?php echo display('ammount') ?></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {invoice_all_data}
+                                    <tr class="details productdatalineheight">
+                                        <td class="text-center">{sl}</td>
+                                        <td class="text-center"><div>{product_name} - ({product_model})</div></td>
+                                        <td class="text-center"><div>{unit}</div></td>
+                                        <td align="center">{description}</td>
+                                        <td align="center">{serial_no}</td>
+                                        <td align="right">{quantity}</td>
+
+                                        <?php if ($discount_type == 1) { ?>
+                                            <td align="right">{discount_per}</td>
+                                        <?php } else { ?>
+                                            <td align="right"><?php echo (($position == 0) ? "$currency {discount_per}" : "{discount_per} $currency") ?></td>
+                                        <?php } ?>
+
+                                        <td align="right"><?php echo (($position == 0) ? "$currency {rate}" : "{rate} $currency") ?></td>
+                                        <td align="right"><?php echo (($position == 0) ? "$currency {total_price}" : "{total_price} $currency") ?></td>
+                                    </tr>
+                                    {/invoice_all_data}
+                                    <tr>
+                                        <td class="text-left" colspan="5"><b><?php echo display('grand_total') ?>:</b></td>
+                                        <td align="right" ><b>{subTotal_quantity}</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="right" ><b><?php echo (($position == 0) ? "$currency {subTotal_ammount}" : "{subTotal_ammount} $currency") ?></b></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-xs-8 invoicefooter-content">
+
+                                    <p></p>
+                                    <p><strong>{invoice_details}</strong></p>
+
+                                </div>
+                                <div class="col-xs-4 inline-block">
+
+                                    <table class="table">
+                                        <?php
+                                        if ($invoice_all_data[0]['total_discount'] != 0) {
+                                            ?>
+                                            <tr>
+                                                <th class="border-bottom-top"><?php echo display('total_discount') ?> : </th>
+                                                <td class="text-right border-bottom-top" ><?php echo html_escape((($position == 0) ? "$currency {total_discount}" : "{total_discount} $currency")) ?> </td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        if ($invoice_all_data[0]['total_tax'] != 0) {
+                                            ?>
+                                            <tr>
+                                                <th class="text-left border-bottom-top" ><?php echo display('tax') ?> : </th>
+                                                <td  class="text-right border-bottom-top" ><?php echo html_escape((($position == 0) ? "$currency {total_tax}" : "{total_tax} $currency")) ?> </td>
+                                            </tr>
+                                        <?php } ?>
+                                        <?php if ($invoice_all_data[0]['shipping_cost'] != 0) {
+                                            ?>
+                                            <tr>
+                                                <th class="text-left border-bottom-top" ><?php echo 'Shipping Cost' ?> : </th>
+                                                <td class="text-right border-bottom-top" ><?php echo html_escape((($position == 0) ? "$currency {shipping_cost}" : "{shipping_cost} $currency")) ?> </td>
+                                            </tr>
+                                        <?php } ?>
+
+                                                <?php
+                                                $explodeUrl = explode('/', $_SERVER['REQUEST_URI']);
+                                                $invoiceNo = end($explodeUrl);
+                                                $this->db->where('invoice_id', $invoiceNo);
+                                                $this->db->select('shipping_method');
+                                                $data1 = $this->db->get('invoice');
+                                                $shippingMethod = $data1->row()->shipping_method;
+                                                ?>
+
+                                        <tr>
+                                            <th class="text-left grand_total">Shipping Method :</th>
+
+                                           <?php if($shippingMethod == 1){ ?>
+                                                <td class="text-right grand_total"> Redx </td>
+                                            <?php }elseif($shippingMethod == 2) { ?>
+                                                <td class="text-right grand_total"> Pathao </td>
+                                            <?php }elseif($shippingMethod == 3) { ?>
+                                                <td class="text-right grand_total">   Sundorban </td>
+                                            <?php }elseif($shippingMethod == 4) { ?>
+                                                <td class="text-right grand_total">    SA Poribahon </td>
+                                            <?php }else { ?>
+                                                <td class="text-right grand_total">  Showroom</td>
+                                            <?php } ?>
+                                        </tr>
+
+                                        <tr>
+                                            <th class="text-left grand_total"><?php echo display('previous'); ?> :</th>
+                                            <td class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {previous}" : "{previous} $currency")) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-left grand_total"><?php echo display('grand_total') ?> :</th>
+                                            <td class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {total_amount}" : "{total_amount} $currency")) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-left grand_total border-bottom-top"><?php echo display('paid_ammount') ?> : </th>
+                                            <td class="text-right grand_total border-bottom-top"><?php echo html_escape((($position == 0) ? "$currency {paid_amount}" : "{paid_amount} $currency")) ?></td>
+                                        </tr>
+                                        <?php
+                                        if ($invoice_all_data[0]['due_amount'] != 0) {
+                                            ?>
+                                            <tr>
+                                                <th class="text-left grand_total"><?php echo display('due') ?> : </th>
+                                                <td  class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {due_amount}" : "{due_amount} $currency")) ?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+                                    </table>
 
 
 
                                 </div>
-
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="inv-footer-left">
+                                        <?php echo display('received_by') ?>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4"> <div class="inv-footer-right">
+                                        <?php echo display('authorised_by') ?>
+                                    </div></div>
                             </div>
 
                         </div>
-
-
-
-                            <br>
-                            <hr>
-
-
-                        <div class="row">
-                           <div style="float: right !important;" class="inline-block col-lg-12">
-                              <div class="table-responsive">
-                                  <table class="table table-striped" id="invoice_details">
-                                      <thead>
-                                      <tr>
-                                          <th class="text-center"><?php echo display('sl') ?></th>
-                                          <th class="text-center"><?php echo display('product_name') ?></th>
-                                          <th class="text-center"><?php if($is_unit !=0){ echo display('unit');
-                                              }?></th>
-                                          <th class="text-center"><?php if($is_desc !=0){ echo display('item_description');} ?></th>
-                                          <th class="text-center"><?php if($is_serial !=0){ echo display('serial_no');} ?></th>
-                                          <th class="text-right"><?php echo display('quantity') ?></th>
-                                          <?php if($is_discount > 0){ ?>
-                                              <?php if ($discount_type == 1) { ?>
-                                                  <th class="text-right"><?php echo display('discount_percentage') ?> %</th>
-                                              <?php } elseif ($discount_type == 2) { ?>
-                                                  <th class="text-right"><?php echo display('discount') ?> </th>
-                                              <?php } elseif ($discount_type == 3) { ?>
-                                                  <th class="text-right"><?php echo display('fixed_dis') ?> </th>
-                                              <?php } ?>
-                                          <?php }else{ ?>
-                                              <th class="text-right"><?php echo ''; ?> </th>
-                                          <?php }?>
-                                          <th class="text-right"><?php echo display('rate') ?></th>
-                                          <th class="text-right"><?php echo display('ammount') ?></th>
-                                      </tr>
-                                      </thead>
-                                      <tbody>
-                                      {invoice_all_data}
-                                      <tr class="details productdatalineheight">
-                                          <td class="text-center">{sl}</td>
-                                          <td class="text-center"><div>{product_name} - ({product_model})</div></td>
-                                          <td class="text-center"><div>{unit}</div></td>
-                                          <td align="center">{description}</td>
-                                          <td align="center">{serial_no}</td>
-                                          <td align="right">{quantity}</td>
-
-                                          <?php if ($discount_type == 1) { ?>
-                                              <td align="right">{discount_per}</td>
-                                          <?php } else { ?>
-                                              <td align="right"><?php echo (($position == 0) ? "$currency {discount_per}" : "{discount_per} $currency") ?></td>
-                                          <?php } ?>
-
-                                          <td align="right"><?php echo (($position == 0) ? "$currency {rate}" : "{rate} $currency") ?></td>
-                                          <td align="right"><?php echo (($position == 0) ? "$currency {total_price}" : "{total_price} $currency") ?></td>
-                                      </tr>
-                                      {/invoice_all_data}
-                                      <tr>
-                                          <td class="text-left" colspan="5"><b><?php echo display('grand_total') ?>:</b></td>
-                                          <td align="right" ><b>{subTotal_quantity}</b></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td align="right" ><b><?php echo (($position == 0) ? "$currency {subTotal_ammount}" : "{subTotal_ammount} $currency") ?></b></td>
-                                      </tr>
-                                      </tbody>
-
-
-                                  </table>
-                              </div>
-                              <div style="float: right !important;" class="row">
-
-
-                                  <div class="inline-block">
-
-                                      <table class="table">
-                                          <?php
-                                          if ($invoice_all_data[0]['total_discount'] != 0) {
-                                              ?>
-                                              <tr>
-                                                  <th class="border-bottom-top"><?php echo display('total_discount') ?> : </th>
-                                                  <td class="text-right border-bottom-top" ><?php echo html_escape((($position == 0) ? "$currency {total_discount}" : "{total_discount} $currency")) ?> </td>
-                                              </tr>
-                                              <?php
-                                          }
-                                          if ($invoice_all_data[0]['total_tax'] != 0) {
-                                              ?>
-                                              <tr>
-                                                  <th class="text-left border-bottom-top" ><?php echo display('tax') ?> : </th>
-                                                  <td  class="text-right border-bottom-top" ><?php echo html_escape((($position == 0) ? "$currency {total_tax}" : "{total_tax} $currency")) ?> </td>
-                                              </tr>
-                                          <?php } ?>
-                                          <?php if ($invoice_all_data[0]['shipping_cost'] != 0) {
-                                              ?>
-                                              <tr>
-                                                  <th class="text-left border-bottom-top" ><?php echo 'Shipping Cost' ?> : </th>
-                                                  <td class="text-right border-bottom-top" ><?php echo html_escape((($position == 0) ? "$currency {shipping_cost}" : "{shipping_cost} $currency")) ?> </td>
-                                              </tr>
-                                          <?php } ?>
-                                          <tr>
-                                              <th class="text-left grand_total"><?php echo display('previous'); ?> :</th>
-                                              <td class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {previous}" : "{previous} $currency")) ?></td>
-                                          </tr>
-                                          <tr>
-                                              <th class="text-left grand_total"><?php echo display('grand_total') ?> :</th>
-                                              <td class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {total_amount}" : "{total_amount} $currency")) ?></td>
-                                          </tr>
-                                          <tr>
-                                              <th class="text-left grand_total border-bottom-top"><?php echo display('paid_ammount') ?> : </th>
-                                              <td class="text-right grand_total border-bottom-top"><?php echo html_escape((($position == 0) ? "$currency {paid_amount}" : "{paid_amount} $currency")) ?></td>
-                                          </tr>
-                                          <?php
-                                          if ($invoice_all_data[0]['due_amount'] != 0) {
-                                              ?>
-                                              <tr>
-                                                  <th class="text-left grand_total"><?php echo display('due') ?> : </th>
-                                                  <td  class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {due_amount}" : "{due_amount} $currency")) ?></td>
-                                              </tr>
-                                              <?php
-                                          }
-                                          ?>
-
-                                      </table>
-
-                                      <br><br>
-
-                                      <div class="row">
-
-                                          <div class="col-md-4">
-                                              <div>
-                                                 <p>---------</p>
-                                                  <?php echo display('received_by') ?>
-                                                  <br>
-                                              </div>
-                                              <br>
-                                          </div>
-
-
-                                          <div class="col-md-4">
-                                              <div>
-                                                 <p>---------</p>
-                                                  <?php echo display('authorised_by') ?>-
-                                                 <p> Style & splash</p>
-                                              </div>
-                                          </div>
-
-
-                                      </div>
-                                      <p><strong>{invoice_details}</strong></p>
-
-
-
-
-                                  </div>
-
-
-                              </div>
-
-
-
-
-
-
-
-                          </div>
-
-                        </div>
-
-
-
-                        </div>
-
-
                     </div>
-
-
-
 
                     <div class="panel-footer text-left">
                         <a  class="btn btn-danger" href="<?php echo base_url('Cinvoice'); ?>"><?php echo display('cancel') ?></a>
                         <button  class="btn btn-info" onclick="printDiv('printableArea')"><span class="fa fa-print"></span></button>
 
                     </div>
-
                 </div>
             </div>
         </div>
