@@ -202,16 +202,26 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
 
 
                                         <?php
-                                        $explodeUrl = explode('/', $_SERVER['REQUEST_URI']);
-                                        $invoiceNo = end($explodeUrl);
-                                        $this->db->where('invoice_id', $invoiceNo);
+//                                        $explodeUrl = explode('/', $_SERVER['REQUEST_URI']);
+////                                        var_dump($explodeUrl );exit();
+//                                        $invoiceNo = end($explodeUrl);
+                                        $this->db->order_by('id',"DESC");
+                                        $this->db->limit(1);
                                         $this->db->select('shipping_method');
-                                        $shippingMethod = $this->db->get('invoice');
-                                        //$shippingMethod = $data1->row()->shipping_method;
+                                        $data1 = $this->db->get('invoice');
+                                        $shippingMethod = $data1->row()->shipping_method;
+
+//                                       var_dump($shippingMethod);exit();
+//                                            $this->db->select('*');
+//                                            $this->db->from('invoice');
+//                                            $this->db->join('comments','comments.user_id = users.u_id');
+//                                            $this->db->get();
+//                                        var_dump($this->db->last_query()); exit();
+
                                         //echo '<pre>';
                                         //print_r($shippingMethod);
                                         //echo '</pre>';
-                                        //exit;
+
                                         ?>
 
 
