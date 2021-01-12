@@ -1,3 +1,4 @@
+
 <?php
 $CI = & get_instance();
 $CI->load->model('Web_settings');
@@ -30,7 +31,7 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
             ?>
             <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <?php echo $message ?>                    
+                <?php echo $message ?>
             </div>
             <?php
             $this->session->unset_userdata('message');
@@ -40,7 +41,7 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
             ?>
             <div class="alert alert-danger alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <?php echo $error_message ?>                    
+                <?php echo $error_message ?>
             </div>
             <?php
             $this->session->unset_userdata('error_message');
@@ -52,7 +53,7 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                     <div id="printableArea" onload="printDiv('printableArea')">
                         <div class="panel-body">
                             <div class="row print_header">
-                                
+
                                 <div class="col-sm-8 company-content">
                                     {company_info}
                                     <img src="<?php
@@ -66,19 +67,19 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                         <strong class="company_name_p">{company_name}</strong><br>
                                         {address}<br>
                                         <abbr><b><?php echo display('mobile') ?>:</b></abbr> {mobile}<br>
-                                        <abbr><b><?php echo display('email') ?>:</b></abbr> 
+                                        <abbr><b><?php echo display('email') ?>:</b></abbr>
                                         {email}<br>
-                                        <abbr><b><?php echo display('website') ?>:</b></abbr> 
+                                        <abbr><b><?php echo display('website') ?>:</b></abbr>
                                         {website}<br>
-                                         {/company_info}
-                                         <abbr>{tax_regno}</abbr>
+                                        {/company_info}
+                                        <abbr>{tax_regno}</abbr>
                                     </address>
-                                   
-                                  
+
+
 
                                 </div>
-                                
-                                 
+
+
                                 <div class="col-sm-4 text-left invoice-address">
                                     <h2 class="m-t-0"><?php echo display('invoice') ?></h2>
                                     <div><?php echo display('invoice_no') ?>: {invoice_no}</div>
@@ -86,7 +87,7 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
 
                                     <span class="label label-success-outline m-r-15"><?php echo display('billing_to') ?></span>
 
-                                    <address class="customer_name_p">  
+                                    <address class="customer_name_p">
                                         <strong class="c_name">{customer_name} </strong><br>
                                         <?php if ($customer_address) { ?>
                                             {customer_address}
@@ -98,25 +99,25 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                         <?php }if ($customer_email) {
                                             ?>
                                             <br>
-                                            <abbr><b><?php echo display('email') ?>:</b></abbr> 
+                                            <abbr><b><?php echo display('email') ?>:</b></abbr>
                                             {customer_email}
                                         <?php } ?>
                                     </address>
                                 </div>
-                            </div> 
+                            </div>
 
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
-                                                   <tr>
-                                            <th class="text-center"><?php echo display('sl') ?></th>
-                                            <th class="text-center"><?php echo display('product_name') ?></th>
-                                              <th class="text-center"><?php if($is_unit !=0){ echo display('unit');
-                                              }?></th>
-                                            <th class="text-center"><?php if($is_desc !=0){ echo display('item_description');} ?></th>
-                                            <th class="text-center"><?php if($is_serial !=0){ echo display('serial_no');} ?></th>
-                                            <th class="text-right"><?php echo display('quantity') ?></th>
-                                            <?php if($is_discount > 0){ ?>
+                                    <tr>
+                                        <th class="text-center"><?php echo display('sl') ?></th>
+                                        <th class="text-center"><?php echo display('product_name') ?></th>
+                                        <th class="text-center"><?php if($is_unit !=0){ echo display('unit');
+                                            }?></th>
+                                        <th class="text-center"><?php if($is_desc !=0){ echo display('item_description');} ?></th>
+                                        <th class="text-center"><?php if($is_serial !=0){ echo display('serial_no');} ?></th>
+                                        <th class="text-right"><?php echo display('quantity') ?></th>
+                                        <?php if($is_discount > 0){ ?>
                                             <?php if ($discount_type == 1) { ?>
                                                 <th class="text-right"><?php echo display('discount_percentage') ?> %</th>
                                             <?php } elseif ($discount_type == 2) { ?>
@@ -125,50 +126,50 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                                 <th class="text-right"><?php echo display('fixed_dis') ?> </th>
                                             <?php } ?>
                                         <?php }else{ ?>
-<th class="text-right"><?php echo ''; ?> </th>
-<?php }?>
-                                            <th class="text-right"><?php echo display('rate') ?></th>
-                                            <th class="text-right"><?php echo display('ammount') ?></th>
-                                        </tr>
+                                            <th class="text-right"><?php echo ''; ?> </th>
+                                        <?php }?>
+                                        <th class="text-right"><?php echo display('rate') ?></th>
+                                        <th class="text-right"><?php echo display('ammount') ?></th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        {invoice_all_data}
-                                        <tr>
-                                            <td class="text-center">{sl}</td>
-                                            <td class="text-center"><div>{product_name} - ({product_model})</div></td>
-                                              <td class="text-center"><div>{unit}</div></td>
-                                            <td align="center">{description}</td>
-                                            <td align="center">{serial_no}</td>
-                                            <td align="right">{quantity}</td>
+                                    {invoice_all_data}
+                                    <tr>
+                                        <td class="text-center">{sl}</td>
+                                        <td class="text-center"><div>{product_name} - ({product_model})</div></td>
+                                        <td class="text-center"><div>{unit}</div></td>
+                                        <td align="center">{description}</td>
+                                        <td align="center">{serial_no}</td>
+                                        <td align="right">{quantity}</td>
 
-                                            <?php if ($discount_type == 1) { ?>
-                                                <td align="right">{discount_per}</td>
-                                            <?php } else { ?>
-                                                <td align="right"><?php echo (($position == 0) ? "$currency {discount_per}" : "{discount_per} $currency") ?></td>
-                                            <?php } ?>
+                                        <?php if ($discount_type == 1) { ?>
+                                            <td align="right">{discount_per}</td>
+                                        <?php } else { ?>
+                                            <td align="right"><?php echo (($position == 0) ? "$currency {discount_per}" : "{discount_per} $currency") ?></td>
+                                        <?php } ?>
 
-                                            <td align="right"><?php echo (($position == 0) ? "$currency {rate}" : "{rate} $currency") ?></td>
-                                            <td align="right"><?php echo (($position == 0) ? "$currency {total_price}" : "{total_price} $currency") ?></td>
-                                        </tr>
-                                        {/invoice_all_data}
-                                        <tr>
-                                            <td class="text-left" colspan="5"><b><?php echo display('grand_total') ?>:</b></td>
-                                            <td align="right" ><b>{subTotal_quantity}</b></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td align="right" ><b><?php echo (($position == 0) ? "$currency {subTotal_ammount}" : "{subTotal_ammount} $currency") ?></b></td>
-                                        </tr>
+                                        <td align="right"><?php echo (($position == 0) ? "$currency {rate}" : "{rate} $currency") ?></td>
+                                        <td align="right"><?php echo (($position == 0) ? "$currency {total_price}" : "{total_price} $currency") ?></td>
+                                    </tr>
+                                    {/invoice_all_data}
+                                    <tr>
+                                        <td class="text-left" colspan="5"><b><?php echo display('grand_total') ?>:</b></td>
+                                        <td align="right" ><b>{subTotal_quantity}</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="right" ><b><?php echo (($position == 0) ? "$currency {subTotal_ammount}" : "{subTotal_ammount} $currency") ?></b></td>
+                                    </tr>
                                     </tbody>
 
                                 </table>
                             </div>
-                               <div class="row">
+                            <div class="row">
 
                                 <div class="col-xs-8 invoicefooter-content">
 
                                     <p></p>
-                                    <p><strong>{invoice_details}</strong></p> 
-                                   
+                                    <p><strong>{invoice_details}</strong></p>
+
                                 </div>
                                 <div class="col-xs-4 inline-block">
 
@@ -189,17 +190,50 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                                 <td  class="text-right border-bottom-top"><?php echo html_escape((($position == 0) ? "$currency {total_tax}" : "{total_tax} $currency")) ?> </td>
                                             </tr>
                                         <?php } ?>
-                                         <?php if ($invoice_all_data[0]['shipping_cost'] != 0) {
+                                        <?php if ($invoice_all_data[0]['shipping_cost'] != 0) {
                                             ?>
                                             <tr>
                                                 <th class="text-left border-bottom-top"><?php echo 'Shipping Cost' ?> : </th>
                                                 <td class="text-right border-bottom-top"><?php echo html_escape((($position == 0) ? "$currency {shipping_cost}" : "{shipping_cost} $currency")) ?> </td>
                                             </tr>
                                         <?php } ?>
+
+
+
+
+                                        <?php
+                                        $explodeUrl = explode('/', $_SERVER['REQUEST_URI']);
+                                        $invoiceNo = end($explodeUrl);
+                                        $this->db->where('invoice_id', $invoiceNo);
+                                        $this->db->select('shipping_method');
+                                        $shippingMethod = $this->db->get('invoice');
+                                        //$shippingMethod = $data1->row()->shipping_method;
+                                        //echo '<pre>';
+                                        //print_r($shippingMethod);
+                                        //echo '</pre>';
+                                        //exit;
+                                        ?>
+
+
+
+
                                         <tr>
-                                            <th class="text-left grand_total"><?php echo display('previous'); ?> :</th>
-                                            <td class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {previous}" : "{previous} $currency")) ?></td>
+                                            <th class="text-left grand_total">Shipping Method :</th>
+
+                                            <?php if($shippingMethod == 1){ ?>
+                                                <td class="text-right grand_total"> Redx </td>
+                                            <?php }elseif($shippingMethod == 2) { ?>
+                                                <td class="text-right grand_total"> Pathao </td>
+                                            <?php }elseif($shippingMethod == 3) { ?>
+                                                <td class="text-right grand_total">   Sundorban </td>
+                                            <?php }elseif($shippingMethod == 4) { ?>
+                                                <td class="text-right grand_total">    SA Poribahon </td>
+                                            <?php }else { ?>
+                                                <td class="text-right grand_total">  Showroom</td>
+                                            <?php } ?>
                                         </tr>
+
+
                                         <tr>
                                             <th class="text-left grand_total"><?php echo display('grand_total') ?> :</th>
                                             <td class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {total_amount}" : "{total_amount} $currency")) ?></td>
@@ -207,7 +241,7 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                         <tr>
                                             <th class="text-left grand_total border-bottom-top"><?php echo display('paid_ammount') ?> : </th>
                                             <td class="text-right grand_total border-bottom-top"><?php echo html_escape((($position == 0) ? "$currency {paid_amount}" : "{paid_amount} $currency")) ?></td>
-                                        </tr>				 
+                                        </tr>
                                         <?php
                                         if ($invoice_all_data[0]['due_amount'] != 0) {
                                             ?>
@@ -220,22 +254,22 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                         ?>
                                     </table>
 
-                                   
+
 
                                 </div>
                             </div>
                             <div class="row margin-top50">
                                 <div class="col-sm-4">
-                                 <div class="inv-footer-left">
+                                    <div class="inv-footer-left">
                                         <?php echo display('received_by') ?>
                                     </div>
                                 </div>
-                               <div class="col-sm-4"></div>
-                                     <div class="col-sm-4"> <div class="inv-footer-right">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4"> <div class="inv-footer-right">
                                         <?php echo display('authorised_by') ?>
                                     </div></div>
                             </div>
-                           
+
                         </div>
                     </div>
 

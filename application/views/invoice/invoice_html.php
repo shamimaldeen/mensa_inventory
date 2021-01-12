@@ -220,10 +220,10 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                             <?php } ?>
                                         </tr>
 
-                                        <tr>
-                                            <th class="text-left grand_total"><?php echo display('previous'); ?> :</th>
-                                            <td class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {previous}" : "{previous} $currency")) ?></td>
-                                        </tr>
+<!--                                        <tr>-->
+<!--                                            <th class="text-left grand_total">--><?php //echo display('previous'); ?><!-- :</th>-->
+<!--                                            <td class="text-right grand_total">--><?php //echo html_escape((($position == 0) ? "$currency {previous}" : "{previous} $currency")) ?><!--</td>-->
+<!--                                        </tr>-->
                                         <tr>
                                             <th class="text-left grand_total"><?php echo display('grand_total') ?> :</th>
                                             <td class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {total_amount}" : "{total_amount} $currency")) ?></td>

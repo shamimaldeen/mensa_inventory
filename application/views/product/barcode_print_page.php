@@ -86,7 +86,7 @@
                         if (!empty($product_id) || !empty($qr_image)) {
                             ?>
                             <div class="text-center">
-                                <a  class="btn btn-info" href="#" onclick="printDiv('printableArea')"><?php echo display('print') ?></a>
+                                <a  class="btn btn-info" href="#" onclick="printbarDiv('printableArea')"><?php echo display('print') ?></a>
                                 <a  class="btn btn-danger" href="<?php echo base_url('Cproduct'); ?>"><?php echo display('cancel') ?></a>
                             </div>
                             <?php

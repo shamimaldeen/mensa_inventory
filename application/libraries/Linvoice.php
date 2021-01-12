@@ -477,6 +477,7 @@ class Linvoice {
         'due_amount'        => number_format($invoice_detail[0]['due_amount'], 2, '.', ','),
         'previous'          => number_format($invoice_detail[0]['prevous_due'], 2, '.', ','),
         'shipping_cost'     => number_format($invoice_detail[0]['shipping_cost'], 2, '.', ','),
+        'shipping_method'   =>$invoice_detail[0]['shipping_method'],
         'invoice_all_data'  => $invoice_detail,
         'company_info'      => $company_info,
         'currency'          => $currency_details[0]['currency'],
