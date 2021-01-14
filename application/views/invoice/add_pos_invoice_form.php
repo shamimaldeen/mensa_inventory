@@ -121,7 +121,12 @@
                                     <div class="col-sm-7">
                                         <select name="paytype" class="form-control" required="" onchange="bank_paymet(this.value)">
                                 <option value="1"><?php echo display('cash_payment');?></option>
-                                <option value="2"><?php echo display('bank_payment');?></option> 
+                                <option value="2"><?php echo display('bank_payment');?></option>
+                                <option value="3"><?php echo display('bkash_payment') ?></option>
+                                <option value="4"><?php echo display('nagad_payment') ?></option>
+                                <option value="5"><?php echo display('creditcard_payment') ?></option>
+                                <option value="6"><?php echo display('dbblmobile_banking_payment') ?></option>
+
                                         </select>
                                       
 
@@ -277,6 +282,23 @@
                                         <input type="text" id="shipping_cost" class="form-control text-right" name="shipping_cost" onkeyup="quantity_calculate(1);"  onchange="quantity_calculate(1);"  placeholder="0.00"  />
                                     </td>
                                 </tr>
+
+
+                                     <tr>
+                                         <td class="text-right" colspan="8"><b> Shipping Method:</b></td>
+                                         <td class="text-right">
+                                             <select name="shipping_method" id="">
+
+                                                 <option value="" selected>Select one</option>
+                                                 <option value="1">Redx</option>
+                                                 <option value="2">Pathao</option>
+                                                 <option value="3">Sundorban</option>
+                                                 <option value="4">SA Poribahon</option>
+                                                 <option value="5">Showroom</option>
+
+                                             </select>
+                                         </td>
+                                     </tr>
                                 <tr>
                                     <td colspan="8"  class="text-right"><b><?php echo display('grand_total') ?>:</b></td>
                                     <td class="text-right">

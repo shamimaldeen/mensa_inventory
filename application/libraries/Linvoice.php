@@ -586,10 +586,11 @@ class Linvoice {
         'is_desc'              => $descript,
         'is_serial'            => $isserial,
         'is_unit'              => $isunit,
+            'discount_type'    =>1,
 
         );
 
-        $chapterList = $CI->parser->parse('invoice/pos_invoice_html', $data, true);
+        $chapterList = $CI->parser->parse('invoice/invoice_html', $data, true);
         return $chapterList;
     }
 

@@ -31,6 +31,7 @@ class Cinvoice extends CI_Controller {
 
     // ================= manual sale insert ============================
     public function manual_sales_insert(){
+
         $CI = & get_instance();
         $CI->auth->check_admin_auth();
         $CI->load->model('Invoices');
@@ -719,7 +720,8 @@ class Cinvoice extends CI_Controller {
         $this->auth->check_admin_auth();
         $CI->load->model('Invoices');
         $product_name   = $this->input->post('product_name',TRUE);
-        $product_info   = $CI->Invoices->autocompletproductdata($product_name);
+        $product_id   = $this->input->post('product_id',TRUE);
+        $product_info   = $CI->Invoices->autocompletproductdata($product_name,$product_id);
 
        if(!empty($product_info)){
         $list[''] = '';

@@ -780,7 +780,7 @@ $('#add_item_p').on('keypress', function (e) {
     clearTimeout(barcodeScannerTimerP);
     barcodeScannerTimerP = setTimeout(function () {
         processBarcodePosinvoice();
-    }, 300);
+    }, 3000);
 });
 
 
