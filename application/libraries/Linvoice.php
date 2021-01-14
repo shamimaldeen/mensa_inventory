@@ -586,7 +586,7 @@ class Linvoice {
         'is_desc'              => $descript,
         'is_serial'            => $isserial,
         'is_unit'              => $isunit,
-            'discount_type'    =>1,
+            'discount_type'    =>3,
 
         );
 
@@ -601,6 +601,7 @@ class Linvoice {
         $CI->load->model('Web_settings');
         $CI->load->library('occational');
         $invoice_detail = $CI->Invoices->retrieve_invoice_html_data($invoice_id);
+//        var_dump($invoice_detail); exit();
          $taxfield = $CI->db->select('*')
                 ->from('tax_settings')
                 ->where('is_show',1)
@@ -686,10 +687,11 @@ class Linvoice {
         'is_serial'            => $isserial,
         'is_unit'              => $isunit,
         'url'                  => $url,
+            'discount_type'    => 1,
 
         );
 
-        $chapterList = $CI->parser->parse('invoice/pos_invoice_html_direct', $data, true);
+        $chapterList = $CI->parser->parse('invoice/invoice_html_manual.php', $data, true);
         return $chapterList;
     }
     // min invoice data 
