@@ -585,8 +585,8 @@ class Linvoice {
         'tax_regno'            => $txregname,
         'is_desc'              => $descript,
         'is_serial'            => $isserial,
-        'is_unit'              => $isunit,
-            'discount_type'    =>3,
+            'is_unit'              => $isunit,
+            'discount_type'    => $currency_details[0]['discount_type'],
 
         );
 

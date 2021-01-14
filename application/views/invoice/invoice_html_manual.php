@@ -117,12 +117,12 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                         <th class="text-center"><?php if($is_desc !=0){ echo display('item_description');} ?></th>
                                         <th class="text-center"><?php if($is_serial !=0){ echo display('serial_no');} ?></th>
                                         <th class="text-right"><?php echo display('quantity') ?></th>
-                                        <?php if($is_discount > 0){ ?>
-                                            <?php if ($discount_type == 1) { ?>
+                                        <?php if($is_discount > 0){?>
+                                            <?php if ($Web_settings[0]['discount_type']  == 1) { ?>
                                                 <th class="text-right"><?php echo display('discount_percentage') ?> %</th>
-                                            <?php } elseif ($discount_type == 2) { ?>
+                                            <?php } elseif ($Web_settings[0]['discount_type']  == 2) { ?>
                                                 <th class="text-right"><?php echo display('discount') ?> </th>
-                                            <?php } elseif ($discount_type == 3) { ?>
+                                            <?php } elseif ($Web_settings[0]['discount_type']  == 3) { ?>
                                                 <th class="text-right"><?php echo display('fixed_dis') ?> </th>
                                             <?php } ?>
                                         <?php }else{ ?>
