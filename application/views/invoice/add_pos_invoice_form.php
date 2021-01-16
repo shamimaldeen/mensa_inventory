@@ -398,6 +398,13 @@
                        <?php echo form_open('Cinvoice/instant_customer', array('class' => 'form-vertical', 'id' => 'newcustomer')) ?>
                     <div class="panel-body">
  <input type ="hidden" name="csrf_test_name" id="" value="<?php echo $this->security->get_csrf_hash();?>">
+
+                        <div class="form-group row">
+                            <label for="mobile" class="col-sm-3 col-form-label"><?php echo display('customer_mobile') ?></label>
+                            <div class="col-sm-6">
+                                <input class="form-control" required="" name ="mobile" id="mobile" type="number" placeholder="<?php echo display('customer_mobile') ?>" min="0" tabindex="3">
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="customer_name" class="col-sm-3 col-form-label"><?php echo display('customer_name') ?> <i class="text-danger">*</i></label>
                             <div class="col-sm-6">
@@ -412,12 +419,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="mobile" class="col-sm-3 col-form-label"><?php echo display('customer_mobile') ?></label>
-                            <div class="col-sm-6">
-                                <input class="form-control" name ="mobile" id="mobile" type="number" placeholder="<?php echo display('customer_mobile') ?>" min="0" tabindex="3">
-                            </div>
-                        </div>
+
 
                         <div class="form-group row">
                             <label for="address " class="col-sm-3 col-form-label"><?php echo display('customer_address') ?></label>
@@ -425,7 +427,42 @@
                                 <textarea class="form-control" name="address" id="address " rows="3" placeholder="<?php echo display('customer_address') ?>" tabindex="4"></textarea>
                             </div>
                         </div>
-                      
+
+
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-3 col-form-label">District</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" name ="district" type="text" placeholder="District" tabindex="2">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-3 col-form-label">Area</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" name ="area" type="text" placeholder="Area" tabindex="2">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-3 col-form-label">AreaId</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" name ="areaid" type="text" placeholder="Area Id" tabindex="2">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-3 col-form-label">Division</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" name ="division" type="text" placeholder="Division" tabindex="2">
+                            </div>
+                        </div>
+
+
                     </div>
                     
                         </div>
