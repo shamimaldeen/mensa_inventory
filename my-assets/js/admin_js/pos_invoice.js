@@ -786,9 +786,9 @@ $('#add_item_p').on('keypress', function (e) {
 
     "use strict";
 function processBarcodePosinvoice() {
-
-    if (barcodeStringPos != '') {  
+    if (barcodeStringPos != '') {
          var product_id = barcodeStringPos;
+         var product_id = product_id.trim();
          var exist = $("#SchoolHiddenId_" + product_id).val();
          var qty = $("#total_qntt_" + product_id).val();
          var add_qty = parseInt(qty)+1;
@@ -809,7 +809,7 @@ function processBarcodePosinvoice() {
                 data: {product_id: product_id,csrf_test_name:csrf_test_name},
                 success: function (data) {
                     if (data == false) {
-                        alert('This Product Not Found !');
+                        alert('This Product Not Found!');
                         document.getElementById('add_item_p').value = '';
                         document.getElementById('add_item_p').focus();
                         quantity_calculate(product_id);
