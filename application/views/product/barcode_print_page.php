@@ -111,13 +111,14 @@
                                                 <td class="barcode-toptd">      
 
                                                     <div class="barcode-inner barcode-innerdiv">
-                                                        <div class="product-name barcode-productname">
-                                                            {company_name}
-                                                        </div>
-                                                        <span class="model-name barcode-modelname">{product_model}</span>
-                                                        <img src="<?php echo base_url('Cbarcode/barcode_generator/{product_id}') ?>" class="img-responsive center-block barcode-image" alt="" >
+
+
+                                                        <img style="height: 60px;width: 250px;" src="<?php echo base_url('Cbarcode/barcode_generator/{product_id}') ?>" class="img-responsive center-block barcode-image" alt="" >
                                                         <div class="product-name-details barcode-productdetails">{product_name}</div>
-                                                        <div class="price barcode-price"><?php echo (($position == 0) ? "$currency {price}" : "{price} $currency") ?> <small class="barcode-vat"><?php echo display('incl_vat') ?>. 
+                                                       <div>
+                                                           <span class="model-name barcode-modelname">{product_model}</span>
+                                                       </div>
+                                                        <div class="price barcode-price"><?php echo (($position == 0) ? "$currency {price}" : "{price} $currency") ?> .
 
                                                         </div>
                                                     </div>
