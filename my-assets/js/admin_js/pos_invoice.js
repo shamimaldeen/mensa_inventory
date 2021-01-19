@@ -1,3 +1,15 @@
+function vatCal() {
+ var  v = $("#vat_cost").val();
+ var grand_total = $("#grandTotal").val();
+ // alert(grand_total);
+ var tax = (v*grand_total)/100;
+ var net_total = parseFloat(grand_total)+ parseFloat(tax);
+ $("#total_tax_amount").val(tax);
+ $("#n_total").val(net_total);
+ $("#dueAmmount").val(net_total);
+
+}
+
 //Add Input Field Of Row
     "use strict";
 function addInputField(t) {
@@ -782,7 +794,7 @@ $('#add_item_p').on('keypress', function (e) {
         processBarcodePosinvoice();
     }, 3000);
 });
-
+"use strict";
 
     "use strict";
 function processBarcodePosinvoice() {
@@ -879,7 +891,6 @@ $(document).ready(function() {
 });
 
 
-
 function cancelprint(){
    location.reload();
 }
@@ -969,6 +980,7 @@ function cancelprint(){
         window.onload = function () {
         $('body').addClass("sidebar-mini sidebar-collapse");
     }
+
 
 
 

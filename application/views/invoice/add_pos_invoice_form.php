@@ -245,12 +245,20 @@
                                         <input type="hidden" id="txfieldnum" value="{taxnumber}">
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="text-right" colspan="1"><b><?php echo display('total_discount') ?>:</b></td>
-                                    <td class="text-right">
-                                        <input type="text" id="total_discount_ammount" class="form-control text-right" name="total_discount" value="0.00" readonly="readonly" />
-                                    </td>
-                                </tr>
+                                     <tr>
+                                         <td class="text-right" colspan="1"><b><?php echo display('total_discount') ?>:</b></td>
+                                         <td class="text-right">
+                                             <input type="text" id="total_discount_ammount" class="form-control text-right" name="total_discount" value="0.00" readonly="readonly" />
+                                         </td>
+                                     </tr>
+
+                                     <tr>
+                                         <td class="text-right" colspan="8"><b><?php echo 'VAT'?>:</b></td>
+                                         <td class="text-right">
+                                             <input type="text" id="vat_cost" class="form-control text-right" name="vat_cost" onkeyup="vatCal()"  placeholder="0.00"  />
+                                         </td>
+                                     </tr>
+
                                     <?php $x=0;
                                      foreach($taxes as $taxfldt){?>
                                     <tr class="hideableRow hiddenRow">
@@ -259,10 +267,7 @@
                                 <td class="text-right">
                                     <input id="total_tax_ammount<?php echo $x;?>" tabindex="-1" class="form-control text-right valid totalTax" name="total_tax<?php echo $x;?>" value="0.00" readonly="readonly" aria-invalid="false" type="text">
                                 </td>
-                               
-                               
-                                 
-                                </tr>
+                                    </tr>
                             <?php $x++;}?>
                                  
                     <tr>
