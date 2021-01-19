@@ -386,6 +386,11 @@ var count = 2,
       },
        focus: function( event, ui ) {
            $(this).val(ui.item.label);
+           if(ui.item.return_id == ui.item.value){
+               document.getElementById("customer_name").style.color = "red";
+           }else{
+               document.getElementById("customer_name").style.color = "black";
+           }
            return false;
        },
        select: function( event, ui ) {
