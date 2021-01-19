@@ -195,19 +195,78 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                             </tr>
                                         <?php } ?>
 
-                                                <?php
-                                                $explodeUrl = explode('/', $_SERVER['REQUEST_URI']);
-                                                $invoiceNo = end($explodeUrl);
-                                                $this->db->where('invoice_id', $invoiceNo);
-                                                $this->db->select('shipping_method');
-                                                $data1 = $this->db->get('invoice');
-                                                $shippingMethod = $data1->row()->shipping_method;
-                                                ?>
+<!--                                                --><?php
+//                                                $explodeUrl = explode('/', $_SERVER['REQUEST_URI']);
+//                                                $invoiceNo = end($explodeUrl);
+//                                                $this->db->where('invoice_id', $invoiceNo);
+//                                                $this->db->select('shipping_method');
+//                                                $data1 = $this->db->get('invoice');
+//                                                $shippingMethod = $data1->row()->shipping_method;
+//                                                ?>
+<!---->
+<!--                                        <tr>-->
+<!--                                            <th class="text-left grand_total">Shipping Method :</th>-->
+<!---->
+<!--                                           --><?php //if($shippingMethod == 1){ ?>
+<!--                                                <td class="text-right grand_total"> Redx </td>-->
+<!--                                            --><?php //}elseif($shippingMethod == 2) { ?>
+<!--                                                <td class="text-right grand_total"> Pathao </td>-->
+<!--                                            --><?php //}elseif($shippingMethod == 3) { ?>
+<!--                                                <td class="text-right grand_total">   Sundorban </td>-->
+<!--                                            --><?php //}elseif($shippingMethod == 4) { ?>
+<!--                                                <td class="text-right grand_total">    SA Poribahon </td>-->
+<!--                                            --><?php //}else { ?>
+<!--                                                <td class="text-right grand_total">  Showroom</td>-->
+<!--                                            --><?php //} ?>
+<!--                                        </tr>-->
+
+<!--                                        <tr>-->
+<!--                                            <th class="text-left grand_total">--><?php //echo display('previous'); ?><!-- :</th>-->
+<!--                                            <td class="text-right grand_total">--><?php //echo html_escape((($position == 0) ? "$currency {previous}" : "{previous} $currency")) ?><!--</td>-->
+<!--                                        </tr>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <?php
+                                        //                                        $explodeUrl = explode('/', $_SERVER['REQUEST_URI']);
+                                        ////                                        var_dump($explodeUrl );exit();
+                                        //                                        $invoiceNo = end($explodeUrl);
+                                        $this->db->order_by('id',"DESC");
+                                        $this->db->limit(1);
+                                        $this->db->select('shipping_method');
+                                        $data1 = $this->db->get('invoice');
+                                        $shippingMethod = $data1->row()->shipping_method;
+
+                                        //                                       var_dump($shippingMethod);exit();
+                                        //                                            $this->db->select('*');
+                                        //                                            $this->db->from('invoice');
+                                        //                                            $this->db->join('comments','comments.user_id = users.u_id');
+                                        //                                            $this->db->get();
+                                        //                                        var_dump($this->db->last_query()); exit();
+
+                                        //echo '<pre>';
+                                        //print_r($shippingMethod);
+                                        //echo '</pre>';
+
+                                        ?>
+
+
+
 
                                         <tr>
                                             <th class="text-left grand_total">Shipping Method :</th>
 
-                                           <?php if($shippingMethod == 1){ ?>
+                                            <?php if($shippingMethod == 1){ ?>
                                                 <td class="text-right grand_total"> Redx </td>
                                             <?php }elseif($shippingMethod == 2) { ?>
                                                 <td class="text-right grand_total"> Pathao </td>
@@ -219,11 +278,6 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                                 <td class="text-right grand_total">  Showroom</td>
                                             <?php } ?>
                                         </tr>
-
-<!--                                        <tr>-->
-<!--                                            <th class="text-left grand_total">--><?php //echo display('previous'); ?><!-- :</th>-->
-<!--                                            <td class="text-right grand_total">--><?php //echo html_escape((($position == 0) ? "$currency {previous}" : "{previous} $currency")) ?><!--</td>-->
-<!--                                        </tr>-->
                                         <tr>
                                             <th class="text-left grand_total"><?php echo display('grand_total') ?> :</th>
                                             <td class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {total_amount}" : "{total_amount} $currency")) ?></td>

@@ -44,7 +44,7 @@ class Invoices extends CI_Model {
          ## Search 
          $searchQuery = "";
          if($searchValue != ''){
-            $searchQuery = " (b.customer_name like '%".$searchValue."%' or a.invoice like '%".$searchValue."%' or a.date like'%".$searchValue."%' or a.invoice_id like'%".$searchValue."%' or u.first_name like'%".$searchValue."%'or u.last_name like'%".$searchValue."%')";
+            $searchQuery = " (b.customer_name like '%".$searchValue."%' or b.customer_mobile like '%".$searchValue."%' or a.invoice like '%".$searchValue."%' or a.date like'%".$searchValue."%' or a.invoice_id like'%".$searchValue."%' or u.first_name like'%".$searchValue."%'or u.last_name like'%".$searchValue."%')";
          }
 
          ## Total number of records without filtering

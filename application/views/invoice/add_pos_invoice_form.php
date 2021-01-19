@@ -400,9 +400,9 @@
  <input type ="hidden" name="csrf_test_name" id="" value="<?php echo $this->security->get_csrf_hash();?>">
 
                         <div class="form-group row">
-                            <label for="mobile" class="col-sm-3 col-form-label"><?php echo display('customer_mobile') ?></label>
+                            <label for="mobile" class="col-sm-3 col-form-label"><?php echo display('customer_mobile') ?> <i class="text-danger">*</i></label>
                             <div class="col-sm-6">
-                                <input class="form-control" required="" name ="mobile" id="mobile" type="number" placeholder="<?php echo display('customer_mobile') ?>" min="0" tabindex="3">
+                                <input class="form-control" required="" name ="mobile" id="mobile" type="number" placeholder="<?php echo display('customer_mobile') ?>" required="" min="0" tabindex="3">
                             </div>
                         </div>
                         <div class="form-group row">
