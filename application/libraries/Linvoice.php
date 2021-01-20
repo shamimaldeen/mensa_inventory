@@ -652,7 +652,7 @@ class Linvoice {
 
         $currency_details = $CI->Web_settings->retrieve_setting_editdata();
         $company_info = $CI->Invoices->retrieve_company();
-        $totalbal = $invoice_detail[0]['total_amount']+$invoice_detail[0]['prevous_due'];
+        $totalbal = $invoice_detail[0]['total_amount']+$invoice_detail[0]['prevous_due']+$invoice_detail[0]['total_tax'];
          $user_id = $invoice_detail[0]['sales_by'];
         $users = $CI->Invoices->user_invoice_data($user_id);
         $data = array(

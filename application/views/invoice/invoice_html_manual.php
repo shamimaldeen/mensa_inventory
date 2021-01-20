@@ -245,7 +245,7 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
 
 
                                         <tr>
-                                            <th class="text-left grand_total"><?php echo display('grand_total') ?> :</th>
+                                            <th class="text-left grand_total"><?php echo display('net_total') ?> :</th>
                                             <td class="text-right grand_total"><?php echo html_escape((($position == 0) ? "$currency {total_amount}" : "{total_amount} $currency")) ?></td>
                                         </tr>
                                         <tr>
