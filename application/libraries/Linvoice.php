@@ -687,7 +687,6 @@ class Linvoice {
         'is_serial'            => $isserial,
         'is_unit'              => $isunit,
         'url'                  => $url,
-            'discount_type'    => 1,
 
         );
 
