@@ -165,7 +165,6 @@ function calculateSum() {
         s_cost =  $("#shipping_cost").val();
 
     //Total Tax
-    // f = $("#total_tax_ammount").val();
     for(var i=0;i<taxnumber;i++){
 
         var j = 0;
@@ -234,9 +233,7 @@ function invoice_paidamount() {
         nt = parseFloat(t, 10) + pr;
     d = a - nt;
     $("#n_total").val(nt.toFixed(2, 2));
-    // $("#n_tota").val(nt.toFixed(2, 2));
-    var tax = $("#total_tax_amount").val();
-    $("#total_tax_amount").val(tax.toFixed(2,2));
+    var tax = $("#total_tax_ammount").val();
     if(f > 0){
         $("#dueAmmount").val(f.toFixed(2,2));
         if(a <= f){
@@ -252,6 +249,7 @@ function invoice_paidamount() {
         }
         $("#dueAmmount").val(0)
     }
+    $("#total_tax_ammount").val(tax.toFixed(2, 2));
 }
 
 //Stock Limit
@@ -306,10 +304,8 @@ function stockLimitAjax(t) {
 function full_paid() {
 
     // alert("ok");
-    // var tax = $("#total_tax_amount").val();
     var grandTotal = $("#n_total").val();
     $("#paidAmount").val(grandTotal);
-    // $("#total_tax_amount").val(tax);
     invoice_paidamount();
     calculateSum();
 }

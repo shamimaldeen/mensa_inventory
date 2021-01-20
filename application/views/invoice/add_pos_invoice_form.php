@@ -37,7 +37,7 @@
             ?>
             <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <?php echo $message ?>                    
+                <?php echo $message ?>
             </div>
             <?php
             $this->session->unset_userdata('message');
@@ -47,7 +47,7 @@
             ?>
             <div class="alert alert-danger alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <?php echo $error_message ?>                    
+                <?php echo $error_message ?>
             </div>
             <?php
             $this->session->unset_userdata('error_message');
@@ -56,14 +56,14 @@
 
         <div class="row">
             <div class="col-sm-12">
-            
+
        <?php if($this->permission1->method('new_invoice','create')->access()){ ?>
                     <a href="<?php echo base_url('Cinvoice') ?>" class="btn btn-info m-b-5 m-r-2"><i class="ti-plus"> </i> <?php echo display('new_invoice') ?> </a>
                 <?php }?>
 <?php if($this->permission1->method('manage_invoice','read')->access()){ ?>
                     <a href="<?php echo base_url('Cinvoice/manage_invoice') ?>" class="btn btn-primary m-b-5 m-r-2"><i class="ti-align-justify"> </i>  <?php echo display('manage_invoice') ?> </a>
  <?php }?>
-                
+
             </div>
         </div>
 
@@ -106,7 +106,7 @@
                                     <label for="invoice_date" class="col-sm-3 col-form-label"><?php echo display('date') ?> <i class="text-danger">*</i></label>
                                     <div class="col-sm-6">
                                         <?php
-                                       
+
                                         $date = date('Y-m-d');
                                         ?>
                                         <input class="form-control" type="text" size="50" id="invoice_date" name="invoice_date" required value="<?php echo html_escape($date); ?>" tabindex="2" />
@@ -128,11 +128,11 @@
                                 <option value="6"><?php echo display('dbblmobile_banking_payment') ?></option>
 
                                         </select>
-                                      
+
 
                                        <input type ="hidden" name="csrf_test_name" id="" value="<?php echo $this->security->get_csrf_hash();?>">
                                     </div>
-                                 
+
                                 </div>
                             </div>
                         </div>
@@ -184,7 +184,7 @@
                                     <div class="col-sm-6">
                                         <input type="text"  size="100" name="customer_name_others_address" class=" form-control" placeholder='<?php echo display('address') ?>' id="customer_name_others_address" tabindex="6"/>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                                     <div class="col-sm-6" id="bank_div">
                             <div class="form-group row">
@@ -198,9 +198,9 @@
                                             <option value="<?php echo html_escape($bank['bank_id'])?>"><?php echo html_escape($bank['bank_name']);?></option>
                                         <?php }?>
                                     </select>
-                                 
+
                                 </div>
-                             
+
                             </div>
                         </div>
                         </div>
@@ -225,7 +225,7 @@
                                     <th class="text-center invoice_fields"><?php echo display('fixed_dis') ?> </th>
                                 <?php } ?>
 
-                                <th class="text-center invoice_fields"><?php echo display('total') ?> 
+                                <th class="text-center invoice_fields"><?php echo display('total') ?>
                                 </th>
                                 <th class="text-center invoice_fields"><?php echo display('action') ?></th>
                                     </tr>
@@ -253,7 +253,7 @@
                                      </tr>
 
                                      <tr>
-                                         <td class="text-right" colspan="8"><b><?php echo 'VAT'?>:</b></td>
+                                         <td class="text-right" colspan="8"><b><?php echo 'VAT %'?>:</b></td>
                                          <td class="text-right">
                                              <input type="text" id="vat_cost" class="form-control text-right" name="vat_cost" onkeyup="vatCal()"  placeholder="0.00"  />
                                          </td>
@@ -262,17 +262,17 @@
                                     <?php $x=0;
                                      foreach($taxes as $taxfldt){?>
                                     <tr class="hideableRow hiddenRow">
-                                       
+
                                 <td class="text-right" colspan="8"><b><?php echo html_escape($taxfldt['tax_name']) ?></b></td>
                                 <td class="text-right">
                                     <input id="total_tax_ammount<?php echo $x;?>" tabindex="-1" class="form-control text-right valid totalTax" name="total_tax<?php echo $x;?>" value="0.00" readonly="readonly" aria-invalid="false" type="text">
                                 </td>
                                     </tr>
                             <?php $x++;}?>
-                                 
+
                     <tr>
                                     <tr>
-                                <td class="text-right" colspan="8"><b><?php echo display('total_tax') ?>:</b></td>
+                                <td class="text-right" colspan="8"><b><?php echo 'Total Vat' ?>:</b></td>
                                 <td class="text-right">
                                     <input id="total_tax_amount" tabindex="-1" class="form-control text-right valid" name="total_tax" value="0.00" readonly="readonly" aria-invalid="false" type="text">
                                 </td>
@@ -280,7 +280,7 @@
                 <i class="fa fa-angle-double-down"></i>
               </a></td>
                                 </tr>
-                               
+
                                  <tr>
                                     <td class="text-right" colspan="8"><b><?php echo display('shipping_cost') ?>:</b></td>
                                     <td class="text-right">
@@ -323,15 +323,15 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                   
+
                                     <td class="text-right" colspan="8"><b><?php echo display('paid_ammount') ?>:</b></td>
                                     <td class="text-right">
-                                        <input type="text" id="paidAmount" 
+                                        <input type="text" id="paidAmount"
                                                onkeyup="invoice_paidamount();" class="form-control text-right" name="paid_amount" placeholder="0.00" tabindex="13" value=""/>
                                     </td>
                                 </tr>
                                 <tr>
-                                   
+
                                    <td align="center">
                                         <input type="button" id="add_invoice_item" class="btn btn-info" name="add-invoice-item"  onClick="addInputField('addinvoiceItem');" value="<?php echo display('add_new_item') ?>" tabindex="12"/>
 
@@ -386,18 +386,18 @@
         </div>
       </div>
 
-      
+
     </div>
 
   <div class="modal fade modal-success" id="cust_info" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            
+
                             <a href="#" class="close" data-dismiss="modal">&times;</a>
                             <h3 class="modal-title"><?php echo display('add_new_customer') ?></h3>
                         </div>
-                        
+
                         <div class="modal-body">
                             <div id="customeMessage" class="alert hide"></div>
                        <?php echo form_open('Cinvoice/instant_customer', array('class' => 'form-vertical', 'id' => 'newcustomer')) ?>
@@ -420,7 +420,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-sm-3 col-form-label"><?php echo display('customer_email') ?></label>
                             <div class="col-sm-6">
-                                <input class="form-control" name ="email" id="email" type="email" placeholder="<?php echo display('customer_email') ?>" tabindex="2"> 
+                                <input class="form-control" name ="email" id="email" type="email" placeholder="<?php echo display('customer_email') ?>" tabindex="2">
                             </div>
                         </div>
 
@@ -469,13 +469,13 @@
 
 
                     </div>
-                    
+
                         </div>
 
                         <div class="modal-footer">
-                            
+
                             <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
-                            
+
                             <input type="submit" class="btn btn-success" value="Submit">
                         </div>
                         <?php echo form_close() ?>

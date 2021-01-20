@@ -204,6 +204,7 @@ function invoice_paidamount() {
 //Invoice full paid
     "use strict";
 function full_paid() {
+
     var grandTotal = $("#n_total").val();
     $("#paidAmount").val(grandTotal);
     invoice_paidamount();
