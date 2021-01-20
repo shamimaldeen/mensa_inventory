@@ -217,22 +217,29 @@ function calculateSum() {
 //Invoice Paid Amount
 "use strict";
 function invoice_paidamount() {
-    var  prb = parseFloat($("#previous").val(), 10);
+    var prb = parseFloat($("#previous").val(), 10);
     var pr = 0;
     var d = 0;
     var nt = 0;
-    if(prb != 0){
-        pr =  prb;
-    }else{
+    if (prb != 0) {
+        pr = prb;
+    } else {
         pr = 0;
     }
-    var t = $("#n_total").val(),
+   var  n_t = $("#n_total").val();
+    if (n_t>0){
+       var nt_t = $("#n_total").val()
+    }else{
+       nt_t =  $("#grandTotal").val()
+    }
+    var t = nt_t,
         a = $("#paidAmount").val(),
         e = t - a,
         f = e + pr,
         nt = parseFloat(t, 10) + pr;
     d = a - nt;
-    $("#n_total").val(nt.toFixed(2, 2));
+        $("#n_total").val(nt.toFixed(2, 2));
+
     var tax = $("#total_tax_ammount").val();
     if(f > 0){
         $("#dueAmmount").val(f.toFixed(2,2));
