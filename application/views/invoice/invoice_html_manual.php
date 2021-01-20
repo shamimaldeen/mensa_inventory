@@ -186,7 +186,7 @@ $Web_settings = $CI->Web_settings->retrieve_setting_editdata();
                                         if ($invoice_all_data[0]['total_tax'] != 0) {
                                             ?>
                                             <tr>
-                                                <th class="text-left border-bottom-top"><?php echo display('tax') ?> : </th>
+                                                <th class="text-left border-bottom-top"><?php echo display('Vat') ?> : </th>
                                                 <td  class="text-right border-bottom-top"><?php echo html_escape((($position == 0) ? "$currency {total_tax}" : "{total_tax} $currency")) ?> </td>
                                             </tr>
                                         <?php } ?>

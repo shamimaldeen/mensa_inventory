@@ -226,7 +226,7 @@ function invoice_paidamount() {
     }else{
         pr = 0;
     }
-    var t = $("#grandTotal").val(),
+    var t = $("#n_total").val(),
             a = $("#paidAmount").val(),
             e = t - a,
             f = e + pr,
@@ -300,6 +300,8 @@ function stockLimitAjax(t) {
 //Invoice full paid
     "use strict";
 function full_paid() {
+
+   // alert("ok");
     var grandTotal = $("#n_total").val();
     $("#paidAmount").val(grandTotal);
     invoice_paidamount();
