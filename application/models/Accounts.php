@@ -591,13 +591,15 @@ $this->db->insert('payroll_tax_setup',$data);
 
     //tax report query
     public function taxdata($from_date,$to_date){
-        return $this->db->select('a.*,b.invoice')
+        return $this->db->select('a.*,b.invoice,b.total_tax')
                         ->from('tax_collection a')
                         ->join('invoice b','a.relation_id = b.invoice_id','left')
                         ->where('a.date >=', $from_date)
                         ->where('a.date <=', $to_date)
                         ->get()
                         ->result_array();
+
+
     }
     // customer information for tax info
     public function tax_customer(){

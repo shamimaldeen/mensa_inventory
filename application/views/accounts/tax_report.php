@@ -1,4 +1,4 @@
-<!-- Edit TAX start -->
+
 <div class="content-wrapper">
     <section class="content-header">
         <div class="header-icon">
@@ -46,6 +46,8 @@
         </div>
 
 
+
+
         <!-- TAX -->
         <div class="row">
             <div class="col-sm-12">
@@ -78,13 +80,7 @@
                                     <td class="text-center"><?php echo $sl;?></td>
                                     <td class="text-center"><?php echo (!empty($taxvalue['invoice'])?$taxvalue['invoice']:$taxvalue['relation_id']);?></td>
                                     <td class="text-center"><?php echo html_escape($taxvalue['date']);?></td>
-                                     <?php 
-                                     $x=0;
-                                     foreach($taxes as $taxfield){
-                                        $txval = 'tax'.$x;
-                                        ?>
-                                    <td class="rpttax<?php echo $x;?> text-right"><?php echo html_escape((!empty($taxvalue[$txval])?$taxvalue[$txval]:'0.00'));?></td>
-                                     <?php $x++;}?>
+                                    <td class="rpttax text-center"><?php echo html_escape((!empty($taxvalue['total_tax'])?$taxvalue['total_tax']:'0.00'));?></td>
                                 </tr>
                             <?php $sl++;
                         }?>
@@ -97,13 +93,24 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="3" class="text-right"><b><?php echo display('total')?></b></td>
-                                       <?php 
-                                     $x=0;
-                                     foreach($taxes as $taxfield){
-                                        $txval = 'tax'.$x;
-                                        ?>
-                                    <td id="rpttax<?php echo $x;?>" class="text-right"></td>
-                                     <?php $x++;}?>
+                                    <?php
+                                    $total = $this->db->select_sum('b.total_tax')
+                                        ->from('tax_collection a')
+                                        ->join('invoice b','a.relation_id = b.invoice_id','left')
+                                        ->get()
+                                        ->row();
+//                                    echo '<pre>';
+//
+//                                    print_r($total->total_tax);
+//                                    echo '<pre>';
+//
+//                                    exit;
+
+                                    ?>
+
+
+                                    <td id="rpttax" class="text-center"><?php echo $total->total_tax; ?></td>
+
                                 </tr>
                             </tfoot>
                         </table>

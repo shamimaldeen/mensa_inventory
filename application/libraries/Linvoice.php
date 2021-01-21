@@ -668,6 +668,7 @@ class Linvoice {
         'total_amount'         => number_format($totalbal, 2, '.', ','),
         'subTotal_cartoon'     => $subTotal_cartoon,
         'subTotal_quantity'    => $subTotal_quantity,
+        'discount_type'        => 1,
         'invoice_discount'     => number_format($invoice_detail[0]['invoice_discount'], 2, '.', ','),
         'total_discount'       => number_format($invoice_detail[0]['total_discount'], 2, '.', ','),
         'total_tax'            => number_format($invoice_detail[0]['total_tax'], 2, '.', ','),

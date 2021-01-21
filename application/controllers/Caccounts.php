@@ -624,6 +624,12 @@ if ($this->db->field_exists($txd, 'quotation_taxinfo')) {
         $data['taxes']    = $taxfield;
         $data['taxnumber']= $num_column;
         $data['taxdata']  = $this->Accounts->taxdata($start,$end);
+
+
+//        echo "<pre>";
+//        print_r($data['taxdata']);
+//        echo "</pre>";
+//        exit;
         $content = $this->parser->parse('accounts/tax_report',$data,true);
         $this->template->full_admin_html_view($content);      
     }
