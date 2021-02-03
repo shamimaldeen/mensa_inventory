@@ -255,7 +255,7 @@
                                      <tr>
                                          <td class="text-right" colspan="8"><b><?php echo 'VAT %'?>:</b></td>
                                          <td class="text-right">
-                                             <input type="text" id="vat_cost" class="form-control text-right" name="vat_cost" onkeyup="vatCal()"  placeholder="0.00"  />
+                                             <input type="text" id="vat_cost" class="form-control text-right" name="vat_cost" onkeyup="vatCal()" required=""  placeholder="0.00"  />
                                          </td>
                                      </tr>
 
